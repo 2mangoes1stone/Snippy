@@ -1,0 +1,9 @@
+<% short = local_assigns.fetch(:short, false) %>
+
+<div>
+  <h2><%= snippet.title %></h2>
+  <% unless short %>
+    <%= simple_format snippet.description %>
+  <% end %>
+  <pre><%= snippet.code %></pre>
+</div>
