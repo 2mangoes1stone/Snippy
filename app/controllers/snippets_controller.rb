@@ -2,7 +2,7 @@ class SnippetsController < ApplicationController
   before_action :set_snippet, only: [:edit, :update, :show, :destroy]
 
   def index
-    @snippets = Snippet.all
+    @snippets = Snippet.all.sorted
   end
 
   def new
