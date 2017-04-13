@@ -1,22 +1,5 @@
-<%= form_for(@snippet) do |f| %>
-  <% @snippet.errors.full_messages.each do |message| %>
-    <p><%= message %></p>
-  <% end %>
+<h1>Edit exitisting article</h1>
 
-  <div>
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-  </div>
+<%= render 'form' %>
 
-  <div>
-    <%= f.label :description %>
-    <%= f.text_area :description, cols: 30 %>
-  </div>
-
-  <div>
-    <%= f.label :code %>
-    <%= f.text_area :code, cols: 30, rows: 10 %>
-  </div>
-
-  <%= f.submit %>
-<% end %>
+<%= render 'navigate'%>

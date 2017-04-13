@@ -1,4 +1,6 @@
 class SnippetsController < ApplicationController
+  before_action :set_snippet, only: [:edit, :update, :show, :destroy]
+
   def index
     @snippets = Snippet.all
   end
@@ -7,9 +9,11 @@ class SnippetsController < ApplicationController
     @snippet = Snippet.new
   end
 
+  def edit
+  end
+
   def create
     # Get the submitted form data from params
-    snippet_params = params.require(:snippet).permit(:title, :description, :code)
     # Create a new model object with that data
     @snippet = Snippet.new(snippet_params)
     # Attempt to save that model to the database
@@ -22,13 +26,31 @@ class SnippetsController < ApplicationController
     end
   end
 
-  def edit
-    @article = Snippet.find(params[:id])
+  def update
+    if @snippet.update(snippet_params)
+      flash[:notice] = "Snippet was successfully edited "
+      redirect_to @snippet
+    else
+      render :edit
+    end
+    
   end
+
   def show
-    @snippet = Snippet.find(params[:id])
+  end
+
+  def destroy
+    @snippet.destroy
+    flash[:notice] = "Snippet was successfully deleted "
+    redirect_to @snippet
   end
   
+  private
+    def set_snippet
+      @snippet = Snippet.find(params[:id])
+    end
 
-
+    def snippet_params
+      params.require(:snippet).permit(:title, :description, :code)
+    end
 end

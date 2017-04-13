@@ -1,5 +1,16 @@
 <h1>Snippy</h1>
 
+<%= link_to 'Add new snippet', new_snippet_path %>
+
 <% @snippets.each do |snippet| %>
   <%= render snippet, short: true %>
+  <table>
+    <tr>
+      <td><%= link_to 'Edit', edit_snippet_path(snippet) %></td>
+      <td> | </td>
+      <td><%= link_to 'Show', snippet_path(snippet) %></td>
+      <td> | </td>
+      <td><%= link_to 'Delete', snippet_path(snippet), method: :delete, data: {confirm: "Are you sure?"} %></td>
+    </tr>
+  </table>
 <% end %>
