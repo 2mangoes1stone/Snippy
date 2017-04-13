@@ -12,7 +12,7 @@
 
 ### Models
 #### Snippet
--title
--description
--code
--category
+-title: what this is
+-description: a short descripion of what this does
+-code: raw code
+-category: e.g rails, ruby, html, css, scss
